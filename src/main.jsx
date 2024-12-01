@@ -39,23 +39,24 @@ const router = createBrowserRouter([
           fetch(`http://localhost:5000/coffees/${params.id}`),
       },
       {
-        path:'/login',
-        element: <Login></Login>
+        path: "/login",
+        element: <Login></Login>,
       },
       {
-        path:'/register',
-        element: <Register></Register>
+        path: "/register",
+        element: <Register></Register>,
       },
       {
-        path:'/users',
+        path: "/users",
         element: <Users></Users>,
-        loader:()=>fetch(`http://localhost:5000/users`)
+        loader: () => fetch(`http://localhost:5000/users`),
       },
       {
-        path:'/updateUser/:id',
+        path: "/updateUser/:id",
         element: <UpdateUser></UpdateUser>,
-        loader:({params})=>fetch(`http://localhost:5000/users/${params.id}`)
-      }
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/users/${params.id}`),
+      },
     ],
   },
 ]);

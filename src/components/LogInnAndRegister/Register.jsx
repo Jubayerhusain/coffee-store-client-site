@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 function Register() {
-  //   const { createUser, user} = useContext(AuthContext);
+  const { createUser } = useContext(AuthContext);
   const [showPassword, setShowPassword] = useState(false);
 
   const hundleRegister = (event) => {
@@ -12,14 +13,14 @@ function Register() {
     const email = event.target.email.value;
     const password = event.target.password.value;
 
-    console.log(name,photo, email, password);
-    // createUser(email, password)
-    //   .then((res) => {
-    //     console.log(res.user);
-    //   })
-    //   .catch((error) => {
-    //     console.log("ERROR", error);
-    //   });
+    console.log(name, photo, email, password);
+    createUser(email, password)
+      .then((res) => {
+        console.log(res.user);
+      })
+      .catch((error) => {
+        console.log("ERROR", error);
+      });
   };
   return (
     <>

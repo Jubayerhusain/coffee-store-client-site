@@ -1,9 +1,9 @@
-import React, { useContext } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import { AuthContext } from "../AuthProvider/AuthProvider";
 
 function Register() {
-//   const { createUser, user} = useContext(AuthContext);
+  //   const { createUser, user} = useContext(AuthContext);
+  const [showPassword, setShowPassword] = useState(false);
 
   const hundleRegister = (event) => {
     event.preventDefault();
@@ -53,17 +53,24 @@ function Register() {
                   required
                 />
               </div>
-              <div className="form-control">
+              <div className="space-y-2 relative form-control">
                 <label className="label">
                   <span className="label-text">Password</span>
                 </label>
                 <input
-                  type="password"
+                  type={showPassword ? "text" : "password"}
                   name="password"
                   placeholder="password"
                   className="input input-bordered"
                   required
                 />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute right-3 top-12 text-orange-400 hover:text-teal-700"
+                >
+                  {showPassword ? "Hide" : "Show"}
+                </button>
               </div>
               <div className="form-control mt-6">
                 <button className="btn btn-primary">Register</button>

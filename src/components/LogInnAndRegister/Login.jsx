@@ -1,27 +1,25 @@
-import React, { useContext } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import { AuthContext } from "../AuthProvider/AuthProvider";
 
 function Login() {
+  // get the the Login User
+  //   const {loginUser} = useContext(AuthContext);
+  const [showPassword, setShowPassword] = useState(false)
+  const handleLogin = (event) => {
+    event.preventDefault();
+    const email = event.target.email.value;
+    const password = event.target.password.value;
 
-  // get the the Login User 
-//   const {loginUser} = useContext(AuthContext);
-    const handleLogin = (event) =>{
-        event.preventDefault();
-        const email = event.target.email.value;
-        const password = event.target.password.value;
-
-        console.log(email, password);
-        // call the login user with send email and password 
-        // loginUser(email, password)
-        // .then(res => {
-        //   console.log(res.user);
-        // })
-        // .catch(error => {
-        //   console.log("ERROR", error);
-        // })
-    }
-
+    console.log(email, password);
+    // call the login user with send email and password
+    // loginUser(email, password)
+    // .then(res => {
+    //   console.log(res.user);
+    // })
+    // .catch(error => {
+    //   console.log("ERROR", error);
+    // })
+  };
 
   return (
     <div className="hero mt-32">
@@ -43,7 +41,7 @@ function Login() {
                 required
               />
             </div>
-            <div className="form-control">
+            {/* <div className="form-control">
               <label className="label">
                 <span className="label-text">Password</span>
               </label>
@@ -59,12 +57,41 @@ function Login() {
                   Forgot password?
                 </a>
               </label>
+            </div> */}
+            <div className="space-y-2 relative form-control">
+              <label className="label">
+                <span className="label-text">Password</span>
+              </label>
+              <input
+                type={showPassword ? "text" : "password"}
+                name="password"
+                placeholder="password"
+                className="input input-bordered"
+                required
+              />
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute right-3 top-12 text-orange-400 hover:text-teal-700"
+              >
+                {showPassword ? "Hide" : "Show"}
+              </button>
             </div>
+            <label className="label">
+                <a href="#" className="label-text-alt link link-hover">
+                  Forgot password?
+                </a>
+              </label>
             <div className="form-control mt-6">
               <button className="btn btn-primary">Login</button>
             </div>
           </form>
-          <p className="text-center text-yellow-500 py-3">if you have no account please <Link to='/register'><u className="text-green-500">Register</u></Link></p>
+          <p className="text-center text-yellow-500 py-3">
+            if you have no account please{" "}
+            <Link to="/register">
+              <u className="text-green-500">Register</u>
+            </Link>
+          </p>
         </div>
       </div>
     </div>

@@ -40,7 +40,7 @@ function Coffees() {
   return (
     <div>
       <h1>Coffee List ({coffees.length})</h1>
-      <h1 className="text-2xl font-bold text-gray-600 text-center my-10">
+      <h1 className="text-2xl font-bold text-gray-400 text-center my-10">
         Our Popular Coffees
       </h1>
       <div className="grid grid-cols-2 gap-8 w-10/12 mx-auto">

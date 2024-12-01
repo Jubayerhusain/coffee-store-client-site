@@ -1,11 +1,12 @@
 import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 function Login() {
   // get the the Login User
-    const {loginUser} = useContext(AuthContext);
-  const [showPassword, setShowPassword] = useState(false)
+  const { loginUser } = useContext(AuthContext);
+  const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate()
   const handleLogin = (event) => {
     event.preventDefault();
     const email = event.target.email.value;
@@ -14,12 +15,13 @@ function Login() {
     console.log(email, password);
     // call the login user with send email and password
     loginUser(email, password)
-    .then(res => {
-      console.log(res.user);
-    })
-    .catch(error => {
-      console.log("ERROR", error);
-    })
+      .then((res) => {
+        console.log(res.user);
+        navigate('/')
+      })
+      .catch((error) => {
+        console.log("ERROR", error);
+      });
   };
 
   return (
@@ -62,10 +64,10 @@ function Login() {
               </button>
             </div>
             <label className="label">
-                <a href="#" className="label-text-alt link link-hover">
-                  Forgot password?
-                </a>
-              </label>
+              <a href="#" className="label-text-alt link link-hover">
+                Forgot password?
+              </a>
+            </label>
             <div className="form-control mt-6">
               <button className="btn btn-primary">Login</button>
             </div>

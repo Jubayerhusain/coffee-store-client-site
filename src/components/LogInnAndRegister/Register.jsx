@@ -1,10 +1,11 @@
 import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 function Register() {
   const { createUser } = useContext(AuthContext);
   const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate()
 
   const hundleRegister = (event) => {
     event.preventDefault();
@@ -17,6 +18,7 @@ function Register() {
     createUser(email, password)
       .then((res) => {
         console.log(res.user);
+        navigate('/')
       })
       .catch((error) => {
         console.log("ERROR", error);

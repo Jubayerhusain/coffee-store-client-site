@@ -1,7 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 function Navber() {
+  const { logout, user } = useContext(AuthContext);
+  const hundleLogOut = () => {
+    logout()
+      .then((res) => {
+        console.log("logout Succesfully done");
+      })
+      .catch((error) => {
+        console.log("ERROR", error.message);
+      });
+  };
   return (
     <div>
       <div className="navbar bg-base-100">
@@ -63,9 +74,21 @@ function Navber() {
               />
             </svg>
           </button>
-          <Link to={`/login`} className="btn btn-ghost border-2 border-gray-200">
-            LogIn
-          </Link>
+          {user ? (
+            <Link
+              onClick={hundleLogOut}
+              className="btn btn-ghost border-2 border-gray-200"
+            >
+              LogOut
+            </Link>
+          ) : (
+            <Link
+              to={`/login`}
+              className="btn btn-ghost border-2 border-gray-200"
+            >
+              LogIn
+            </Link>
+          )}
         </div>
       </div>
     </div>

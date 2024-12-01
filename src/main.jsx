@@ -20,7 +20,9 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Coffees></Coffees>,
-        loader: () => fetch(`http://localhost:5000/coffees`),
+        // loader: () => fetch(`http://localhost:5000/coffees`),
+        loader: () =>
+          fetch(`http://localhost:5000/coffees`),
       },
       {
         path: "/addCoffee",
@@ -30,13 +32,19 @@ const router = createBrowserRouter([
         path: "/updateCoffee/:id",
         element: <UpdateCoffee></UpdateCoffee>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/coffees/${params.id}`),
+          // fetch(`http://localhost:5000/coffees/${params.id}`),
+          fetch(
+            `http://localhost:5000/coffees/${params.id}`
+          ),
       },
       {
         path: "/coffeeDetails/:id",
         element: <Details></Details>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/coffees/${params.id}`),
+          // fetch(`http://localhost:5000/coffees/${params.id}`),
+          fetch(
+            `http://localhost:5000/coffees/${params.id}`
+          ),
       },
       {
         path: "/login",
@@ -49,13 +57,18 @@ const router = createBrowserRouter([
       {
         path: "/users",
         element: <Users></Users>,
-        loader: () => fetch(`http://localhost:5000/users`),
+        // loader: () => fetch(`http://localhost:5000/users`),
+        loader: () =>
+          fetch(`http://localhost:5000/users`),
       },
       {
         path: "/updateUser/:id",
         element: <UpdateUser></UpdateUser>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/users/${params.id}`),
+          // fetch(`http://localhost:5000/users/${params.id}`),
+          fetch(
+            `http://localhost:5000/users/${params.id}`
+          ),
       },
     ],
   },

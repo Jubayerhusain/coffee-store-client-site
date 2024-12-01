@@ -18,7 +18,7 @@ function Users() {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/users/${_id}`, {
+        fetch(`http://localhost:5000/users${_id}`, {
           method: "DELETE",
         })
           .then((result) => result.json())

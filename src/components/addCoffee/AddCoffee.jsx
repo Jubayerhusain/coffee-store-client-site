@@ -27,7 +27,7 @@ function AddCoffee() {
     const newCoffee = { name, chef, supplier, taste, category, details, photo };
 
     // API call
-    fetch(`http://localhost:5000/coffees`, {
+    fetch(`http://localhost:5000/coffees/`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newCoffee),

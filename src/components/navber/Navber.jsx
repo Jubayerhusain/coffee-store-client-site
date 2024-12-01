@@ -49,6 +49,9 @@ function Navber() {
                 <Link to="/addCoffee">Add Coffees</Link>
               </li>
               <li>
+                <Link to="/users">Users</Link>
+              </li>
+              <li>
                 <a>About</a>
               </li>
             </ul>

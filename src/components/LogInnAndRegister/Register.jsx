@@ -23,6 +23,16 @@ function Register() {
       .catch((error) => {
         console.log("ERROR", error);
       });
+
+      // Post the user data to database 
+      const user = {name, email, photo}
+      fetch(`http://localhost:5000/users`,{
+        method:'POST',
+        headers:{
+          'content-type':'application/json'
+        },
+        body: JSON.stringify(user)
+      })
   };
   return (
     <>

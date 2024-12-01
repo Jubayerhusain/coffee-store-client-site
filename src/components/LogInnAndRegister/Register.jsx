@@ -8,10 +8,11 @@ function Register() {
   const hundleRegister = (event) => {
     event.preventDefault();
     const name = event.target.name.value;
+    const photo = event.target.photo.value;
     const email = event.target.email.value;
     const password = event.target.password.value;
 
-    console.log(name, email, password);
+    console.log(name,photo, email, password);
     // createUser(email, password)
     //   .then((res) => {
     //     console.log(res.user);
@@ -37,6 +38,18 @@ function Register() {
                   type="text"
                   name="name"
                   placeholder="name"
+                  className="input input-bordered"
+                  required
+                />
+              </div>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Photo URL</span>
+                </label>
+                <input
+                  type="text"
+                  name="photo"
+                  placeholder="photo url"
                   className="input input-bordered"
                   required
                 />
